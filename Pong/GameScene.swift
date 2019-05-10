@@ -18,6 +18,28 @@ class GameScene: SKScene {
         label.fontSize = 45
         label.fontColor = SKColor.yellow
         label.fontName = "Avenir"
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
+        view.addGestureRecognizer(recognizer)
     }
     
+    @objc func tap(recognizer: UIGestureRecognizer) {
+        let viewLocation = recognizer.location(in: view)
+        let sceneLocation = convertPoint(fromView: viewLocation)
+        //let moveToAction = SKAction.move(to: sceneLocation, duration: 1)
+        //label.run(moveToAction)
+        let moveByAction = SKAction.moveBy(x: sceneLocation.x - label.position.x, y: sceneLocation.y - label.position.y, duration: 1)
+        //label.run(moveByAction)
+        
+        // Reversed action
+        let moveByReversedAction = moveByAction.reversed()
+        let moveByActions = [moveByAction, moveByReversedAction]
+        let moveSequence = SKAction.sequence(moveByActions)
+        //let moveRepeatSequence = SKAction.repeat(moveSequence, count: 3)
+        let moveRepeatForeverSequence = SKAction.repeatForever(moveSequence)
+        
+        //label.run(moveSequence)
+        //label.run(moveRepeatSequence)
+        label.run(moveRepeatForeverSequence)
+    }
 }
