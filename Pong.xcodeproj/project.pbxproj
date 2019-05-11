@@ -18,6 +18,7 @@
 		0DBE03E52284AC93002F8E38 /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE03E42284AC93002F8E38 /* PongTests.swift */; };
 		0DBE03F02284AC93002F8E38 /* PongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE03EF2284AC93002F8E38 /* PongUITests.swift */; };
 		0DBE03FE2284AF66002F8E38 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE03FD2284AF66002F8E38 /* Ball.swift */; };
+		0DBE040022866FF0002F8E38 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBE03FF22866FF0002F8E38 /* Vector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		0DBE03EF2284AC93002F8E38 /* PongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongUITests.swift; sourceTree = "<group>"; };
 		0DBE03F12284AC93002F8E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0DBE03FD2284AF66002F8E38 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
+		0DBE03FF22866FF0002F8E38 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				0DBE03C92284AC90002F8E38 /* AppDelegate.swift */,
 				0DBE03FD2284AF66002F8E38 /* Ball.swift */,
+				0DBE03FF22866FF0002F8E38 /* Vector.swift */,
 				0DBE03CB2284AC90002F8E38 /* GameScene.sks */,
 				0DBE03CD2284AC90002F8E38 /* Actions.sks */,
 				0DBE03CF2284AC90002F8E38 /* GameScene.swift */,
@@ -272,6 +275,7 @@
 			files = (
 				0DBE03FE2284AF66002F8E38 /* Ball.swift in Sources */,
 				0DBE03D02284AC90002F8E38 /* GameScene.swift in Sources */,
+				0DBE040022866FF0002F8E38 /* Vector.swift in Sources */,
 				0DBE03D22284AC90002F8E38 /* GameViewController.swift in Sources */,
 				0DBE03CA2284AC90002F8E38 /* AppDelegate.swift in Sources */,
 			);
