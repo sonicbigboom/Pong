@@ -21,14 +21,11 @@ class GameScene: SKScene {
         circle.position = CGPoint(x: ball.x, y: ball.y)
         circle.fillColor = SKColor.white
         
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(tap))
-        view.addGestureRecognizer(recognizer)
     }
     
-    @objc func tap(recognizer: UIGestureRecognizer) {
-        //let viewLocation = recognizer.location(in: view)
-        //let sceneLocation = convertPoint(fromView: viewLocation)
-        ball.speed = 10
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        ball.speed = 5
         ball.move()
         var move:SKAction
         if ball.x > Double(view!.frame.width) {
@@ -44,5 +41,4 @@ class GameScene: SKScene {
         }
         circle.run(move)
     }
-    
 }
