@@ -51,4 +51,14 @@ class Ball {
         x += velocity.x
         y += velocity.y
     }
+    //Opposite of move()
+    func moveReverse() {
+        x -= velocity.x
+        x -= velocity.y
+    }
+    //Move to a specific location.
+    func moveTo(x:Double ,y:Double) {
+        self.x = x
+        self.y = y 
+    }
 }

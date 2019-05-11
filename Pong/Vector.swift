@@ -36,6 +36,24 @@ struct Vector {
     mutating func convertToUnitVector() {
         self = unitVector()
     }
+    //Return vector magnitude based on new x value.
+    func magnitudeFromX(_ x:Double) -> Double {
+        return unitVector().y * ( x / unitVector().x)
+    }
+    //Convert vector based on new x value.
+    mutating func convertFromX(_ x:Double) {
+        self.y = magnitudeFromX(x)
+        self.x = x
+    }
+    //Return vector magnitude based on new y value.
+    func magnitudeFromY(_ y:Double) -> Double {
+        return unitVector().x * ( y / unitVector().y)
+    }
+    //Convert vector based on new y value.
+    mutating func convertFromY(_ y:Double) {
+        self.x = magnitudeFromY(y)
+        self.y = y
+    }
     
     //Implement vector multiplication.
     static func *(lhs:Vector, rhs:Double) -> Vector {

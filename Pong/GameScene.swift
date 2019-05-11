@@ -28,9 +28,20 @@ class GameScene: SKScene {
     @objc func tap(recognizer: UIGestureRecognizer) {
         //let viewLocation = recognizer.location(in: view)
         //let sceneLocation = convertPoint(fromView: viewLocation)
-        ball.speed = 100
+        ball.speed = 10
         ball.move()
-        let move = SKAction.move(to: CGPoint(x: ball.x, y:ball.y), duration: 0.5)
+        var move:SKAction
+        if ball.x > Double(view!.frame.width) {
+            ball.moveReverse()
+            ball.moveTo(x: Double(view!.frame.width), y: ball.y + ball.velocity.magnitudeFromX(Double(view!.frame.width) - ball.x))
+            let moveA = SKAction.move(to: CGPoint(x: ball.x, y: ball.y), duration: 0.05)
+            ball.velocity.x.negate()
+            ball.move()
+            let moveB = SKAction.move(to: CGPoint(x: ball.x, y: ball.y), duration: 0.05)
+            move = SKAction.sequence([moveA,moveB])
+        } else {
+            move = SKAction.move(to: CGPoint(x: ball.x, y:ball.y), duration: 0.05)
+        }
         circle.run(move)
     }
     
