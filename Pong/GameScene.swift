@@ -28,18 +28,56 @@ class GameScene: SKScene {
         let sceneLocation = convertPoint(fromView: viewLocation)
         //let moveToAction = SKAction.move(to: sceneLocation, duration: 1)
         //label.run(moveToAction)
-        let moveByAction = SKAction.moveBy(x: sceneLocation.x - label.position.x, y: sceneLocation.y - label.position.y, duration: 1)
+        //let moveByAction = SKAction.moveBy(x: sceneLocation.x - label.position.x, y: sceneLocation.y - label.position.y, duration: 1)
         //label.run(moveByAction)
         
         // Reversed action
-        let moveByReversedAction = moveByAction.reversed()
-        let moveByActions = [moveByAction, moveByReversedAction]
-        let moveSequence = SKAction.sequence(moveByActions)
+        //let moveByReversedAction = moveByAction.reversed()
+        //let moveByActions = [moveByAction, moveByReversedAction]
+        //let moveSequence = SKAction.sequence(moveByActions)
         //let moveRepeatSequence = SKAction.repeat(moveSequence, count: 3)
-        let moveRepeatForeverSequence = SKAction.repeatForever(moveSequence)
+        //let moveRepeatForeverSequence = SKAction.repeatForever(moveSequence)
         
         //label.run(moveSequence)
         //label.run(moveRepeatSequence)
-        label.run(moveRepeatForeverSequence)
+        //label.run(moveRepeatForeverSequence)
+        
+        /*
+        if atPoint(sceneLocation) == label {
+            let scale = SKAction.scale(to: 0.5, duration: 1)
+            label.run(scale)
+        }
+        */
+        
+        /*
+        let sceneNodes = nodes(at: sceneLocation)
+        for sceneNode in sceneNodes {
+            if sceneNode == label {
+                //let scale = SKAction.scale(to: 0.5, duration: 1)
+                //let scale = SKAction.scaleX(to: 0.5, duration: 1)
+                //let scale = SKAction.scaleY(to: 2, duration: 1)
+                //let scale = SKAction.scaleX(to: 0.5, y: 2, duration: 1)
+                //label.run(scale)
+                
+                //let scale = SKAction.scale(by: 0.5, duration: 1)
+                let scale = SKAction.scaleX(by: 0.5, y: 2, duration: 1)
+                let reverseScale = scale.reversed()
+                let actions = [scale, reverseScale]
+                let sequence = SKAction.sequence(actions)
+                //label.run(sequence)
+                //let repeatSequence = SKAction.repeat(sequence, count: 5)
+                let repeatSequence = SKAction.repeatForever(sequence)
+                label.run(repeatSequence)
+                break
+            }
+        }
+        */
+        
+        let move = SKAction.move(to: sceneLocation, duration: 1)
+        //let scale = SKAction.scaleX(to: 0.5, y: 2, duration: 1)
+        let scale = SKAction.scaleX(by: 0.5, y: 2, duration: 1)
+        let actions = [move, scale]
+        let sequence = SKAction.sequence(actions)
+        label.run(sequence)
     }
 }
