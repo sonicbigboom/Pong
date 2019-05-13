@@ -10,35 +10,26 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    var ball = Ball(x: 0, y: 0, velocity: Vector(4,3))
-    let circle = SKShapeNode(circleOfRadius: 2)
+    var ball: Ball = Ball(x: 0, y: 0, velocity: Vector(0,0), radius: 1)
     
     override func didMove(to view: SKView) {
-        ball.x = Double(view.frame.width / 2)
-        ball.y = Double(view.frame.height / 2)
+        ball = Ball(x: Double(view.frame.width / 2), y: Double(view.frame.height / 2), velocity: Vector(4,3), radius: 2)
         ball.speed = 1
-        addChild(circle)
-        circle.position = CGPoint(x: ball.x, y: ball.y)
-        circle.fillColor = SKColor.white
-        
+        ball.color = SKColor.white
+        addChild(ball.shapeNode)
     }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        ball.speed = 5
-        ball.move()
-        var move:SKAction
+        ball.speed = 10
+        var move:SKAction = ball.move()
         if ball.x > Double(view!.frame.width) {
-            ball.moveReverse()
-            ball.moveTo(x: Double(view!.frame.width), y: ball.y + ball.velocity.magnitudeFromX(Double(view!.frame.width) - ball.x))
-            let moveA = SKAction.move(to: CGPoint(x: ball.x, y: ball.y), duration: 0.05)
+            //ball.moveReverse()
+            let moveA = ball.moveTo(x: Double(view!.frame.width), y: ball.y + ball.velocity.magnitudeFromX(Double(view!.frame.width) - ball.x))
             ball.velocity.x.negate()
-            ball.move()
-            let moveB = SKAction.move(to: CGPoint(x: ball.x, y: ball.y), duration: 0.05)
+            let moveB = ball.move()
             move = SKAction.sequence([moveA,moveB])
-        } else {
-            move = SKAction.move(to: CGPoint(x: ball.x, y:ball.y), duration: 0.05)
         }
-        circle.run(move)
+        ball.shapeNode.run(move)
     }
 }

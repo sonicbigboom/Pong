@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Darwin
 
 //Vector Structure.
 struct Vector {
@@ -16,6 +17,26 @@ struct Vector {
     var y:Double
     var magnitude: Double {
         return sqrt((x * x) + (y * y))
+    }
+    var angle: Double {
+        get {
+            var output:Double = 1
+            if y == 0 {
+                output = 90 + (x * 90)
+            } else if x == 0 {
+                output = y * 90
+            } else if y > 0 {
+                output = atan(y/x) * 180 / Double.pi
+            } else if y < 0 {
+                output = (atan(y/x) * 180 / Double.pi) + 180
+            }
+            return output
+        }
+        set(newAngle) {
+            let tempMagnitude = magnitude
+            x = cos(newAngle * Double.pi / 180) * tempMagnitude
+            y = sin(newAngle * Double.pi / 180) * tempMagnitude
+        }
     }
     
     //Initializers:

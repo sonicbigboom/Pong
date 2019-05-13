@@ -7,58 +7,29 @@
 //
 
 import Foundation
+import SpriteKit
 
-//Ball Class.
-class Ball {
+//Object Class.
+class Ball: Object {
     
     //Variables
-    var x:Double
-    var y:Double
-    var unitVelocity:Vector
-    var speed:Double
-    
-    //The velocity is the direction (unitVelocity) times its speed.
-    var velocity:Vector {
+    var radius: Double
+    var color: SKColor {
         get {
-            return unitVelocity * speed
+            return shapeNode.fillColor
         }
-        set(newVelocity) {
-            unitVelocity = newVelocity.unitVector()
-            speed = newVelocity.magnitude
+        set(newColor) {
+            shapeNode.fillColor = newColor
         }
     }
     
     //Initializers:
-    //Initialize with x and y.
-    init(x:Double,y:Double) {
+    //Initialize with x, y and initial velocity and radius.
+    init(x:Double, y:Double, velocity:Vector, radius:Double) {
+        self.radius = radius
+        super.init(x: x, y: y, velocity: velocity)
+        shapeNode = SKShapeNode(circleOfRadius: CGFloat(radius))
         self.x = x
         self.y = y
-        self.unitVelocity = Vector(0,0)
-        self.speed = 0
-    }
-    //Initialize with x and y and initial velocity.
-    init(x:Double, y:Double, velocity:Vector) {
-        self.x = x
-        self.y = y
-        self.unitVelocity = velocity.unitVector()
-        self.speed = velocity.magnitude
-    }
-    
-    //Functions:
-    //Make the ball move based on its current velocity.
-    //NOTE: BOUNCING PHYSICS NOT YET IMPLEMENTED
-    func move() {
-        x += velocity.x
-        y += velocity.y
-    }
-    //Opposite of move()
-    func moveReverse() {
-        x -= velocity.x
-        x -= velocity.y
-    }
-    //Move to a specific location.
-    func moveTo(x:Double ,y:Double) {
-        self.x = x
-        self.y = y 
     }
 }
