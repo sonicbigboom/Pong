@@ -14,14 +14,6 @@ class Ball: Object {
     
     //Variables
     var radius: Double
-    var color: SKColor {
-        get {
-            return shapeNode.fillColor
-        }
-        set(newColor) {
-            shapeNode.fillColor = newColor
-        }
-    }
     
     //Initializers:
     //Initialize with x, y and initial velocity and radius.

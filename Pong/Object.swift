@@ -14,7 +14,7 @@ import Darwin
 class Object {
     
     //Variables
-    var shapeNode:SKShapeNode = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1)), cornerRadius: 0)
+    var shapeNode:SKShapeNode = SKShapeNode(rect: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 1, height: 1)))
     var x:Double {
         get {
             return Double(shapeNode.position.x)
@@ -41,6 +41,14 @@ class Object {
         }
         set(newAngle) {
             direction.angle = newAngle
+        }
+    }
+    var color: SKColor {
+        get {
+            return shapeNode.fillColor
+        }
+        set(newColor) {
+            shapeNode.fillColor = newColor
         }
     }
     
